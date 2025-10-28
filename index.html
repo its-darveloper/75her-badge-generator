@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,20 +8,22 @@
     <meta name="description" content="Generate your commitment badge for the #75HER Tech Challenge! 75 days of intensive learning and building for women in tech.">
     
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://75her-badge-generator.vercel.app/">
+    <meta property="og:url" content="https://75her-badge.createherfest.com/">
     <meta property="og:title" content="#75HER Commitment Badge Generator">
     <meta property="og:description" content="Generate your commitment badge for the #75HER Tech Challenge! 75 days of intensive learning and building for women in tech.">
-    <meta property="og:image" content="https://75her-badge-generator.vercel.app/badge-base.png"> <meta property="og:image:width" content="1080">
+    <meta property="og:image" content="https://75her-badge.createherfest.com/badge-base.png">
+    <meta property="og:image:width" content="1080">
     <meta property="og:image:height" content="1350">
     
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://75her-badge-generator.vercel.app/">
+    <meta property="twitter:url" content="https://75her-badge.createherfest.com/">
     <meta property="twitter:title" content="#75HER Commitment Badge Generator">
     <meta property="twitter:description" content="Generate your commitment badge for the #75HER Tech Challenge! 75 days of intensive learning and building for women in tech.">
-    <meta property="twitter:image" content="https://75her-badge-generator.vercel.app/badge-base.png">
+    <meta property="twitter:image" content="https://75her-badge.createherfest.com/badge-base.png">
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Urbanist:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
     <style>
         /* BRAND COLOR PALETTE */
@@ -340,8 +341,14 @@
             counter-increment: item;
             position: relative;
             padding-left: 40px;
-            display: flex;
+            display: flex; /* Use flexbox for better alignment */
             align-items: flex-start;
+            flex-wrap: wrap; /* Allow content to wrap naturally */
+        }
+
+        .instructions ol li strong {
+            display: inline; /* Ensure strong tags don't break flow */
+            white-space: nowrap; /* Prevent breaking important phrases */
         }
 
         .instructions ol li::before {
@@ -664,6 +671,10 @@
         .share-btn.facebook {
             background: linear-gradient(135deg, #1877F2 0%, #0d5dbf 100%);
         }
+        
+        .share-btn.youtube {
+            background: linear-gradient(135deg, #FF0000 0%, #CC0000 100%);
+        }
 
         .share-btn:hover {
             transform: translateY(-3px);
@@ -773,6 +784,10 @@
             text-align: center;
             font-size: 0.8em;
         }
+        
+        .footer-links-bottom p {
+            margin: 5px 0;
+        }
 
         .footer-links-bottom a {
             color: var(--color-secondary);
@@ -802,102 +817,30 @@
             justify-content: center;
             transition: all 0.3s;
             font-weight: 600;
-            font-size: 0.85em;
-        }
-
-        .social-icons a:hover {
-            background: var(--gradient-accent);
-            border-color: transparent;
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 4px 12px rgba(71, 61, 198, 0.4);
+            font-size: 1.1em; /* Increased size for icons */
         }
         
-        /* MOBILE RESPONSIVE */
-        @media (max-width: 768px) {
-            .navbar {
-                padding: 12px 4%;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .logo {
-                font-size: 1.3em;
-            }
-
-            .join-btn {
-                font-size: 0.85em;
-                padding: 8px 16px;
-            }
-
-            #hero-section {
-                padding: 30px 16px 16px;
-            }
-
-            .instructions {
-                padding: 24px 20px;
-            }
-
-            .instructions ol li {
-                padding-left: 36px;
-                font-size: 0.9em;
-            }
-
-            .instructions ol li::before {
-                width: 24px;
-                height: 24px;
-                font-size: 0.8em;
-            }
-
-            #generator-module {
-                padding: 30px 20px;
-                width: 95%;
-            }
-
-            button, .cta-link {
-                padding: 14px 20px;
-                font-size: 0.95em;
-            }
-
-            .share-buttons {
-                flex-direction: column;
-            }
-
-            .share-btn {
-                width: 100%;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-            
-            .footer-section {
-                width: 100%;
-                margin-bottom: 20px;
-            }
-            
-            .footer-logo-section h4 {
-                text-align: center;
-            }
-            
-            .footer-section h5 {
-                text-align: center;
-            }
-            
-            .social-icons {
-                justify-content: center;
-            }
+        .social-icons a.instagram:hover {
+             background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+             color: white;
+             border-color: transparent;
+        }
+        .social-icons a.x-twitter:hover {
+            background-color: #1DA1F2;
+            color: white;
+            border-color: transparent;
+        }
+        .social-icons a.youtube:hover {
+            background-color: #FF0000;
+            color: white;
+            border-color: transparent;
+        }
+        .social-icons a.linkedin:hover {
+            background-color: #0077B5;
+            color: white;
+            border-color: transparent;
         }
 
-        @media (max-width: 480px) {
-            button#download-btn, .cta-link {
-                max-width: 100%;
-            }
-        }
     </style>
 </head>
 <body>
@@ -958,13 +901,13 @@
             <h4>Share Your Commitment 🚀</h4>
             <div class="share-buttons">
                 <a href="#" class="share-btn twitter" id="share-twitter" target="_blank" rel="noopener">
-                    Twitter
+                    <i class="fab fa-x-twitter"></i> Twitter
                 </a>
                 <a href="#" class="share-btn linkedin" id="share-linkedin" target="_blank" rel="noopener">
-                    LinkedIn
+                    <i class="fab fa-linkedin-in"></i> LinkedIn
                 </a>
                 <a href="#" class="share-btn facebook" id="share-facebook" target="_blank" rel="noopener">
-                    Facebook
+                    <i class="fab fa-facebook-f"></i> Facebook
                 </a>
             </div>
         </div>
@@ -980,9 +923,11 @@
                 <h4>CreateHER Fest</h4>
                 <p>Empowering women to lead the future of technology through education, mentorship, and hands-on experience in AI, Blockchain, and AR/VR.</p>
                 <div class="social-icons">
-                    <a href="https://www.instagram.com/createherfest/" aria-label="Instagram">IG</a>
-                    <a href="https://www.linkedin.com/company/createherfest/" aria-label="LinkedIn">IN</a>
-                    <a href="https://www.facebook.com/createherfest/" aria-label="Facebook">FB</a>
+                    <a href="https://instagram.com/createherfest/" class="instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com/createherfest" class="x-twitter" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://youtube.com/@createherfest" class="youtube" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.linkedin.com/company/createherfest/" class="linkedin" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.facebook.com/createherfest/" class="facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                 </div>
             </div>
 
@@ -1009,6 +954,7 @@
         </div>
         
         <div class="footer-links-bottom">
+            <p>Built by <a href="https://www.linkedin.com/in/darlyze-calixte-0501a8117/" target="_blank" style="font-weight: 700; color: var(--color-accent);">Darveloper</a></p>
             <p>&copy; 2025 CreateHER Fest. All Rights Reserved. | 
                 <a href="https://www.createherfest.com/terms">Terms of Use</a> | 
                 <a href="https://www.createherfest.com/privacy">Privacy Policy</a>
@@ -1020,6 +966,8 @@
         const BADGE_WIDTH = 1080;
         const BADGE_HEIGHT = 1350;
         const MAX_FILE_SIZE = 1024 * 1024; // 1MB
+        // ** Output Multiplier for High Resolution **
+        const OUTPUT_MULTIPLIER = 2.0; // 1080x1350 * 2 = 2160x2700 px
         const badgeImageURL = 'badge-base.png';
 
         // Initialize Fabric Canvas
@@ -1043,7 +991,7 @@
 
         // Share text configuration
         const shareText = "I'm committing to the #75HER Tech Challenge! 75 days of learning, building, and leveling up in tech. Join me! 🚀";
-        const shareUrl = "https://75her-badge.createherfest.com/"; // Use the deployed URL for sharing
+        const shareUrl = "https://75her-badge.createherfest.com/"; 
         const shareHashtags = "75HER,WomenInTech,CreateHERFest";
 
         // Load badge base
@@ -1120,10 +1068,11 @@
 
         // Download badge
         function downloadBadge() {
+            // ** HIGH RESOLUTION OUTPUT **
             const dataURL = canvas.toDataURL({
                 format: 'png',
                 quality: 1.0,
-                multiplier: 1,
+                multiplier: OUTPUT_MULTIPLIER, // Multiplies resolution by 2.0
             });
 
             const a = document.createElement('a');
@@ -1144,7 +1093,7 @@
 
         // Setup social share links
         function setupShareLinks() {
-            // Twitter
+            // Twitter (X)
             const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}&hashtags=${encodeURIComponent(shareHashtags)}`;
             shareTwitter.href = twitterUrl;
 
