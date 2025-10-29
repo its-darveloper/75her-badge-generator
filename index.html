@@ -111,7 +111,54 @@
             gap: 25px;
         }
 
-        .nav-links a {
+        /* NEW DROPDOWN CONTAINER STYLES */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--color-surface-dark);
+            min-width: 180px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
+            z-index: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            top: 40px; /* Adjust as needed */
+            border: 1px solid var(--color-border);
+            padding: 8px 0;
+        }
+
+        .dropdown-content a {
+            color: var(--color-text-muted);
+            padding: 10px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: background-color 0.2s, color 0.2s, transform 0.2s;
+            position: relative;
+        }
+        
+        /* Remove the :after line for dropdown links to keep it clean */
+        .dropdown-content a::after {
+            content: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgba(71, 61, 198, 0.2);
+            color: white;
+            transform: translateX(3px);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        /* Apply existing nav-links a styles to the main dropdown trigger */
+        .nav-links a, .dropdown-trigger {
             color: var(--color-text-muted);
             text-decoration: none;
             font-size: 0.9em;
@@ -120,9 +167,10 @@
             border-radius: 6px;
             transition: all 0.3s;
             position: relative;
+            cursor: pointer;
         }
 
-        .nav-links a::after {
+        .nav-links a::after, .dropdown-trigger::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -133,15 +181,26 @@
             transition: all 0.3s;
             transform: translateX(-50%);
         }
-
-        .nav-links a:hover {
+        
+        .nav-links a:hover, .dropdown-trigger:hover {
             color: white;
             background-color: rgba(71, 61, 198, 0.2);
         }
 
-        .nav-links a:hover::after {
+        .nav-links a:hover::after, .dropdown-trigger:hover::after {
             width: 80%;
         }
+
+        .dropdown-trigger i {
+            margin-left: 5px;
+            font-size: 0.7em;
+            transition: transform 0.3s;
+        }
+        
+        .dropdown:hover .dropdown-trigger i {
+             transform: rotate(180deg);
+        }
+        /* END NEW DROPDOWN CONTAINER STYLES */
 
         .join-btn {
             background: var(--gradient-accent);
@@ -848,12 +907,35 @@
     <div class="navbar">
         <a href="https://www.createherfest.com/" class="logo">&lt;CHF/&gt;</a>
         <div class="nav-links">
-            <a href="https://www.createherfest.com/about">About</a>
-            <a href="https://www.createherfest.com/programs">Programs</a>
-            <a href="https://www.createherfest.com/community">Community</a>
-            <a href="https://www.createherfest.com/partner">Partner</a>
+            
+            <div class="dropdown">
+                <span class="dropdown-trigger">Programs <i class="fas fa-caret-down"></i></span>
+                <div class="dropdown-content">
+                    <a href="https://www.createherfest.com/75her-challenge">75HER Challenge</a>
+                    <a href="https://luma.com/createherfest?k=c">Event Calendar</a>
+                </div>
+            </div>
+            
+            <div class="dropdown">
+                <span class="dropdown-trigger">Community <i class="fas fa-caret-down"></i></span>
+                <div class="dropdown-content">
+                    <a href="https://www.createherfest.com/resources">Resources</a>
+                    <a href="https://form.jotform.com/252244489956168">Volunteer with Us</a>
+                </div>
+            </div>
+            
+            <div class="dropdown">
+                <span class="dropdown-trigger">About <i class="fas fa-caret-down"></i></span>
+                <div class="dropdown-content">
+                    <a href="https://www.createherfest.com/about">Our Story</a>
+                    <a href="https://www.createherfest.com/faqs">FAQs</a>
+                </div>
+            </div>
+            
+            <a href="https://form.jotform.com/252066000104033">Partner</a>
         </div>
-        <a href="https://www.createherfest.com/community" class="join-btn">Join Community</a>
+        
+        <a href="https://form.jotform.com/252656346451056" class="join-btn">Join #75HER</a>
     </div>
     <div id="hero-section">
         <div class="phase-badge">Jan 6 - Mar 31, 2026</div>
@@ -934,21 +1016,21 @@
             <div class="footer-section">
                 <h5>Community</h5>
                 <ul>
-                    <li><a href="https://www.createherfest.com/75her-challenge">#75HER Challenge</a></li>
-                    <li><a href="#">Apply to Speak</a></li>
-                    <li><a href="#">Become a Mentor</a></li>
-                    <li><a href="#">Volunteer</a></li>
+                    <li><a href="https://form.jotform.com/252656346451056">#75HER Challenge</a></li>
+                    <li><a href="https://form.jotform.com/252075022932147">Apply to Speak</a></li>
+                    <li><a href="https://form.jotform.com/252842678168167">Become a Mentor</a></li>
+                    <li><a href="https://form.jotform.com/252244489956168">Volunteer</a></li>
                 </ul>
             </div>
 
             <div class="footer-section">
                 <h5>Resources</h5>
                 <ul>
-                    <li><a href="#">Learning Hub</a></li>
-                    <li><a href="#">Event Calendar</a></li>
-                    <li><a href="#">Partner With Us</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">FAQ Center</a></li>
+                    <li><a href="https://www.createherfest.com/resources">Learning Hub</a></li>
+                    <li><a href="https://luma.com/createherfest?k=c">Event Calendar</a></li>
+                    <li><a href="https://form.jotform.com/252066000104033">Partner With Us</a></li>
+                    <li><a href="mailto:info@createherfest.com">Contact Us</a></li>
+                    <li><a href="https://www.createherfest.com/faqs">FAQ Center</a></li>
                 </ul>
             </div>
         </div>
