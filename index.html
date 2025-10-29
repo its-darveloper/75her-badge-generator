@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>#75HER Badge Generator | CreateHER Fest</title>
     
+    <link rel="icon" type="image/svg+xml" href="https://createherfest.notion.site/image/attachment%3A7a278da7-73bf-452e-ab75-dea45c75df34%3Achf-logo.svg?table=block&id=2871ac87-fe57-80b0-8eaa-c99584a4acd1&spaceId=0c5e5dd0-9df7-4a03-acd6-a76b92f612c6&userId=&cache=v2">
+    
     <meta name="description" content="Generate your commitment badge for the #75HER Tech Challenge! 75 days of intensive learning and building for women in tech.">
     
     <meta property="og:type" content="website">
@@ -81,6 +83,7 @@
             background-color: rgba(21, 14, 96, 0.95);
             backdrop-filter: blur(12px);
             display: flex;
+            flex-wrap: wrap; /* Added for mobile wrapping */
             justify-content: space-between;
             align-items: center;
             padding: 14px 5%;
@@ -89,32 +92,38 @@
             z-index: 1000;
         }
 
+        /* UPDATED LOGO STYLES for image */
         .logo {
-            font-family: 'Urbanist', sans-serif;
-            font-size: 1.5em;
-            font-weight: 800;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
             text-decoration: none;
             transition: transform 0.3s;
-            background-size: 200% auto;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 48px; /* Corrected size */
+            width: auto;
+            display: block; 
         }
 
         .logo:hover {
             transform: scale(1.05);
         }
+        /* END UPDATED LOGO STYLES */
 
         .nav-links {
             display: flex;
             gap: 25px;
+            /* FIX: Ensure all items within nav-links are vertically aligned */
+            align-items: center; 
         }
 
         /* NEW DROPDOWN CONTAINER STYLES */
         .dropdown {
             position: relative;
-            display: inline-block;
+            /* FIX: Ensure dropdown container is vertically aligned */
+            display: inline-flex; 
+            align-items: center; 
         }
 
         .dropdown-content {
@@ -214,6 +223,8 @@
             box-shadow: 0 4px 12px rgba(71, 61, 198, 0.3);
             position: relative;
             overflow: hidden;
+            /* Desktop visibility: */
+            display: inline-flex; 
         }
 
         .join-btn::before {
@@ -234,6 +245,18 @@
         .join-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(71, 61, 198, 0.5);
+        }
+        
+        /* NEW: Mobile Menu Toggle Button */
+        .menu-toggle {
+            display: none; /* Hide by default on desktop */
+            background: none;
+            border: none;
+            color: var(--color-secondary);
+            font-size: 1.5em;
+            cursor: pointer;
+            padding: 0;
+            margin-left: 15px;
         }
 
         /* HERO SECTION */
@@ -900,13 +923,90 @@
             border-color: transparent;
         }
 
+        /* --- MEDIA QUERY FOR MOBILE STYLES --- */
+        @media (max-width: 768px) {
+            .navbar {
+                height: 70px; 
+            }
+            
+            /* Hide the main button on the top bar */
+            .join-btn {
+                display: none; 
+            }
+            
+            /* Show the hamburger icon */
+            .menu-toggle {
+                display: block;
+            }
+            
+            /* Collapse the nav links by default */
+            .nav-links {
+                width: 100%; 
+                flex-direction: column;
+                display: none; 
+                text-align: center;
+                margin-top: 10px; 
+                padding-bottom: 10px;
+                background-color: rgba(21, 14, 96, 0.9);
+                border-top: 1px solid var(--color-border);
+            }
+
+            /* Display the nav links when the 'active' class is added by JS */
+            .nav-links.active {
+                display: flex;
+            }
+            
+            /* Style individual links to fill the width */
+            .nav-links a, .dropdown {
+                width: 100%;
+                padding: 10px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                margin: 0;
+            }
+            
+            /* Re-center the dropdown trigger text on mobile */
+            .dropdown-trigger {
+                padding: 10px 0;
+                display: block;
+            }
+
+            /* Adjust dropdown content positioning for full width vertical menu */
+            .dropdown-content {
+                position: static; /* Stack vertically, full width */
+                min-width: 100%;
+                box-shadow: none;
+                border: none;
+                border-radius: 0;
+                padding: 0;
+                background-color: transparent;
+            }
+
+            .dropdown-content a {
+                padding: 10px 0 10px 20px; /* Indent mobile dropdown links */
+            }
+
+            /* Ensure dropdown links show hover background across the full width */
+            .nav-links a:hover, .dropdown-trigger:hover {
+                width: 100%;
+                background-color: rgba(71, 61, 198, 0.2);
+            }
+        }
+        /* --- END MEDIA QUERY --- */
+
     </style>
 </head>
 <body>
 
     <div class="navbar">
-        <a href="https://www.createherfest.com/" class="logo">&lt;CHF/&gt;</a>
-        <div class="nav-links">
+        <a href="https://www.createherfest.com/" class="logo">
+             <img src="https://createherfest.notion.site/image/attachment%3A7a278da7-73bf-452e-ab75-dea45c75df34%3Achf-logo.svg?table=block&id=2871ac87-fe57-80b0-8eaa-c99584a4acd1&spaceId=0c5e5dd0-9df7-4a03-acd6-a76b92f612c6&userId=&cache=v2" alt="CreateHER Fest Logo">
+        </a>
+        
+        <button class="menu-toggle" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="nav-links" id="nav-links">
             
             <div class="dropdown">
                 <span class="dropdown-trigger">Programs <i class="fas fa-caret-down"></i></span>
@@ -933,6 +1033,8 @@
             </div>
             
             <a href="https://form.jotform.com/252066000104033">Partner</a>
+            
+            <a href="https://form.jotform.com/252656346451056" class="join-btn mobile-cta" style="display: none;">Join #75HER</a>
         </div>
         
         <a href="https://form.jotform.com/252656346451056" class="join-btn">Join #75HER</a>
@@ -1044,6 +1146,23 @@
         </div>
     </footer>
     <script>
+        // NEW: Mobile menu toggle functionality
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            // Toggle the icon between bars and times (close)
+            const icon = menuToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
         // Constants
         const BADGE_WIDTH = 1080;
         const BADGE_HEIGHT = 1350;
